@@ -227,13 +227,16 @@
       </td></tr>
       </table>
       <br>
-
+      
+      <center><h1>Abstract</h1></center>
       <div style="width:800px; margin:0 auto; text-align=center">
-        Contemporary sensorimotor learning approaches typically start with an existing complex agent (e.g., a robotic arm), which they learn to control. In contrast, this paper investigates a modular co-evolution strategy: a collection of primitive agents learns to dynamically self-assemble into composite bodies while also learning to coordinate their behavior to control these bodies. Each primitive agent consists of a limb with a motor attached at one end. Limbs may choose to link up to form collectives. When a limb initiates a link-up action and there is another limb nearby, the latter is magnetically connected to the 'parent' limb's motor. This forms a new single agent, which may further link with other agents. In this way, complex morphologies can emerge, controlled by a policy whose architecture is in explicit correspondence with the morphology. We evaluate the performance of these <em>dynamic</em> and <em>modular</em> agents in simulated environments. We demonstrate better generalization to test-time changes both in the environment, as well as in the agent morphology, compared to static and monolithic baselines.
-      </div>
+        3D referring (grounding) is a newly defined vision task aiming at indicating target object describedby nature languages from a 3D scene. While some research have achieved great success in referring2D instances in a image or video context, predicting desired 3D instance is still an open problem,since 3D scene provides more complicated visual information and spatial relation among differentobjects. In addition, there are countless sentences that can describe the position of a 3D object, whichmakes the language harder to understand. However, this task attracts researcher’s attention with richpotential to apply in human-computer interaction, navigation, etc.      </div>
       <br><hr>
-
-      <center><h1>Self-Assembling Agents</h1></center>
+      <div style="width:800px; margin:0 auto; text-align=center">
+        To approach this task, previous efforts mainly contain two steps: 1) they first segment 3D instancesand learn instance-level visual representation throughout the scene; 2) then integrate the visual featurewith input language features and determine the instance(s) that best align the feature of input language.This pipeline successfully addresses many simple query sentence, but easily failed when the querysentences describe complex spatial relation between objects (e.g.‘Standing in the middle of the room,looking at the two windows, the one to the right’). One critical issue that accounts is, the structureand relation of language tokens are equally important compared with the vision part, but harderto understand. By treating language as a linear structure, neither max-pooling [1,2] nor attentionmechanism [3] is sufficient to learn spatial relationship in language effectively.      
+      <br><hr>
+      
+      <center><h1>Introduction</h1></center>
       <div style="width:800px; margin:0 auto; text-align=center">
         This work investigates the joint learning of control and morphology in self-assembling agents. We illustrate our dynamic agents in two environments / tasks: standing up and locomotion. For each of these, we generate several new environment for evaluating zero-shot generalization without any finetuning.
       </div><br/>
