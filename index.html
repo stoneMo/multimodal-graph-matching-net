@@ -273,9 +273,15 @@
       <center><h1>Related Works</h1></center>
       <div style="width:800px; margin:0 auto; text-align=center">
         <b>2D/3D Visual Grounding</b> In recent years, connecting vision to natural language gains its popularity. Visual grounding [4,5] is one of the long standing tasks that aims to localize the instance that isreferred by the query sentence. One vital clue is to understand the relationships between objects.Following this insight, researchers deploy powerful Graph Neural Network on visual [6] and language[7] graph processed by preliminary pipelines and extracts discriminative features for alignment.The newly released 3D grounding data [1,2] is even closer to our real world scenario. [8] applied agenerative model for conditional generation of 3D models from text in augmented reality applications.[1] proposed a concurrent work to localize/discover referred objects in 3D scenes by collectingnatural language. In this work, we closely follow the same setting as [1,2], and focus on identifyinga referred object among instances of the same fine-grained category given the segmented objectinstances in a room.
-        
+      </div><br/>
+  
+      <div style="width:800px; margin:0 auto; text-align=center">
+
         <b>3D Deep Learning</b>With the success of deep learning, the vision community try to study 3D worldby multi-view [9], voxel [10] and point cloud [11] representation.  Among these early practices,PointNet is proved to be efficient and convenient for large-scale 3D scene understanding. On top ofthat, some researchers [12,13] present a detection-free instance segmentation pipeline by shiftingpoints to its instance centroid. In another thread, by advancing recent Sparse Convolution [14] andCNN paradigm such as UNet and ResNet, 3DCNN produces expressive local features in 3D. Our visual learning works closely follow these cutting edges.
-      
+      </div><br/>
+
+      <div style="width:800px; margin:0 auto; text-align=center">
+
         <b>Graph Matching</b> Graph matching [15,16,17] is a widely used techniques that measures thestructural similarity of two instances, especially for image registration and matching. However, howto extend this techniques into an end-to-end trainable pipeline is still an open task. Zanfil et al. [16]first cope with this methods by a bi-stochastic optimization over a 2-order similarity matrix. However,our graph data in the language side is more simple than the keypoint graph generated from ImageNet. Therefore, a greedy algorithm or heuristic algorithm is sufficient for us.
       </div><br/>
 
