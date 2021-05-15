@@ -237,7 +237,10 @@
       <center><h1>Introduction</h1></center>
       <div style="width:800px; margin:0 auto; text-align=center">
       <!-- <div class="col col-wrapper"> -->
-        3D referring (grounding) is a newly defined vision task aiming at indicating target object describedby nature languages from a 3D scene. While some research have achieved great success in referring2D instances in a image or video context, predicting desired 3D instance is still an open problem,since 3D scene provides more complicated visual information and spatial relation among differentobjects. In addition, there are countless sentences that can describe the position of a 3D object, whichmakes the language harder to understand. However, this task attracts researcher’s attention with richpotential to apply in human-computer interaction, navigation, etc.  
+        3D referring (grounding) is a newly defined vision task aiming at indicating target object describedby nature languages from a 3D scene. 
+        While some research have achieved great success in referring 2D instances in a image or video context, predicting desired 3D instance is still an open problem, since 3D scene provides more complicated visual information and spatial relation among differentobjects. 
+        In addition, there are countless sentences that can describe the position of a 3D object, which makes the language harder to understand. 
+        However, this task attracts researcher’s attention with rich potential to apply in human-computer interaction, navigation, etc.  
 
         <!-- <blockquote>$\displaystyle{\hat{N}^l_i = \phi_n(N^l_i); \hat{E}^l_t = \phi_e(E^l_i)}$</blockquote> -->
         <!-- $\\$\alpha + \\$\beta = \\$(\alpha + \beta).$ -->
@@ -245,7 +248,12 @@
 
       <div style="width:800px; margin:0 auto; text-align=center">
       <!-- <div class="col col-wrapper"> -->
-        To approach this task, previous efforts mainly contain two steps: 1) they first segment 3D instancesand learn instance-level visual representation throughout the scene; 2) then integrate the visual featurewith input language features and determine the instance(s) that best align the feature of input language. This pipeline successfully addresses many simple query sentence, but easily failed when the querysentences describe complex spatial relation between objects (e.g., 'Standing in the middle of the room,looking at the two windows, the one to the right'). One critical issue that accounts is, the structureand relation of language tokens are equally important compared with the vision part, but harderto understand. By treating language as a linear structure, neither max-pooling [1,2] nor attentionmechanism [3] is sufficient to learn spatial relationship in language effectively.      
+        To approach this task, previous efforts mainly contain two steps: 
+        1) they first segment 3D instancesand learn instance-level visual representation throughout the scene; 
+        2) then integrate the visual featurewith input language features and determine the instance(s) that best align the feature of input language. 
+        This pipeline successfully addresses many simple query sentence, but easily failed when the querysentences describe complex spatial relation between objects (<i>e.g.</i>, <i>'Standing in the middle of the room,looking at the two windows, the one to the right'</i>). 
+        One critical issue that accounts is, the structureand relation of language tokens are equally important compared with the vision part, but harderto understand. 
+        By treating language as a linear structure, neither max-pooling [1,2] nor attentionmechanism [3] is sufficient to learn spatial relationship in language effectively.      
         <!-- \(\alpha\) -->
         <!-- \(\hat{N}^l_i = \phi_n(N^l_i); \hat{E}^l_t = \phi_e(E^l_i)\) -->
         <!-- \[\hat{N}^l_i = \phi_n(N^l_i); \hat{E}^l_t = \phi_e(E^l_i)\] -->
@@ -287,8 +295,7 @@
 
 
       <center><h1>Method</h1></center>
-
-      <h2>Problem Setup</h2>
+      <center><h2>Problem Setup</h2></center>
 
       <div style="width:800px; margin:0 auto; text-align=center">
         Our Multimodal Graph Matching Network takes a 3D point cloud \(P\in \mathbb{R}^{T\times3}=\{p_1,...,p_n\}\) with RGB/normal features \(F\in \mathbb{R}^{T\times4}=\{f_1,...,f_n\}\) and a query sentence as an input. 
@@ -301,6 +308,16 @@
         For the \(j\)-th node in \(\hat{\mathcal{G}}^l\), we compute its 1-NN sub-tree as \(\hat{\mathcal{T}}^v_j\). 
         Section \ref{mgm} serves as a similarity metric for \(\hat{\mathcal{T}}^v_j\) and \(\hat{\mathcal{T}}^l\). 
         It reflects the confident value of the \(j\)-th instance being referred by the sentence.
+      </div><br/>
+
+      <center><h2>Parsing Tree Generation</h2></center>
+
+      <div style="width:800px; margin:0 auto; text-align=center">
+        In order to get rid of linear structures of token-wised embeddings used in previous work, we apply an English dependency parser~\cite{} to the token-wise GloVE feature \(Q=\{q_1,...,q_k\}\) of the description for each sample instance.  
+        In this way, the dependency structure of sentences, <i>i.e.</i>, which words depend on (modify or are arguments of) which other words will be learned.
+        In Figure \ref{}, we show an example of the dependency tree for the description 'there is a   white toilet. placed in the corner of the bath.'.
+        Given the sentence, we generate a parsing tree \(\mathcal{T}^l=\{N^l_c,(N^l_1,E^l_1),...,(N^l_t,E^l_t)\}\), where \(N,E\) are \(d\) dimension node/edge feature of the parsing tree respectively. 
+        In this case, we set the center node `toilet' as $N^l_c$, the leaf node `bath' as \(N^l_t\), and the edge `corner' as \(E^l_t\).
       </div><br/>
 
 
