@@ -455,6 +455,27 @@
         where instances are counted positive if and only if the IoU of predicted box and the ground truth box larger than the threshold.
       </div><br/>
 
+      <center><h2>Experiment Settings</h2></center>
+      <div style="width:800px; margin:0 auto; text-align=center"></div>
+        Our implementation is built on PyTorch.
+        We train the network for 32 epochs by using the Adam optimizer with the batch size of 32.
+        The initial learning rate is 0.001 with the decay as 0.9 at 10, 20 epoch.
+        All experiments are conducted on one NVIDIA 2080Ti GPU.
+      </div><br/>
+
+      <center><h2>Comparison with State-of-the-arts</h2></center>
+      <div style="width:800px; margin:0 auto; text-align=center"></div>
+        Table \ref{tab: exp_sota} reports the comparsion results with state-of-the-arts.
+
+      </div><br/>
+
+      
+      <center><h2>Visualization Results</h2></center>
+
+      <div style="width:800px; margin:0 auto; text-align=center"></div>
+        Figure \ref{fig: vis_scanrefer} shows visualization results using our proposed model.
+      </div><br/>
+
 
 
 
