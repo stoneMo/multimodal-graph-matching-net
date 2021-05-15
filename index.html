@@ -417,7 +417,12 @@
         In referencing, we predict 3D instances with similarity score above a threshold, which is naturally effective for query sentences with multi corresponding instances. 
         Empirically, we found the Contrastive loss obtains superior performance against CrossEntropy loss and InfoNCE loss. 
         Given the visual sub-tree of a positive instance and a negative instance, the loss function is formulated as below.
+
+        \[\mathcal{L}(\hat{\mathcal{T}}^v_{+},\hat{\mathcal{T}}^v_{-},\hat{\mathcal{T}}^l) = \max(\mathcal{D}(\hat{\mathcal{T}}^v_{-},\hat{\mathcal{T}}^l)-\mathcal{D}(\hat{\mathcal{T}}^v_{+},\hat{\mathcal{T}}^l)+\alpha,0)\]
+        where \(\alpha\) is the hyper-parameter greater than 0.
+
       </div><br/>
+
 
 
 
