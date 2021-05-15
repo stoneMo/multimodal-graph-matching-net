@@ -339,11 +339,11 @@
       <center><h2>3.2 Parsing Tree Generation</h2></center>
 
       <div style="width:800px; margin:0 auto; text-align=center">
-        In order to get rid of linear structures of token-wised embeddings used in previous work, we apply an English dependency parser~\cite{} to the token-wise GloVE feature \(Q=\{q_1,...,q_k\}\) of the description for each sample instance.  
+        In order to get rid of linear structures of token-wised embeddings used in previous work, we apply an English dependency parser [21] to the token-wise GloVE feature \(Q=\{q_1,...,q_k\}\) of the description for each sample instance.  
         In this way, the dependency structure of sentences, <i>i.e.</i>, which words depend on (modify or are arguments of) which other words will be learned.
         In Figure 2, we show an example of the dependency tree for the description 'there is a   white toilet. placed in the corner of the bath.'.
         Given the sentence, we generate a parsing tree \(\mathcal{T}^l=\{N^l_c,(N^l_1,E^l_1),...,(N^l_t,E^l_t)\}\), where \(N,E\) are \(d\) dimension node/edge feature of the parsing tree respectively. 
-        In this case, we set the center node `toilet' as $N^l_c$, the leaf node `bath' as \(N^l_t\), and the edge `corner' as \(E^l_t\).
+        In this case, we set the center node `toilet' as \(N^l_c\), the leaf node `bath' as \(N^l_t\), and the edge `corner' as \(E^l_t\).
       </div><br/>
 
       <!-- <table align=center width=1000px>
