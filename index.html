@@ -364,6 +364,9 @@
         Specifically, the instance (node) feature \(N^t\) is extracted by a sparse convolution network (SCN) and the relation (edge) feature is extracted through a multi-layer perceptron (MLP). 
         Then we use a convolution layer \(\phi\) to couple the edge feature with associated neighboring node feature. 
         DGCN learns a node feature by simultaneously aggregate edge and neighboring node feature with a max-pooling, as shown in equation below.
+        
+        \[\hat{N}^v_i = \max_j \phi(SCN(N^v_j),MLP([C_i,C_j,C_i-C_j,||C_i-C_j||_2]))\]
+      
       </div><br/>
 
       <style type="text/css">
