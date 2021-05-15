@@ -233,7 +233,7 @@
       </td></tr>
       </table>
       <br>
-      
+
       <center><h1>Introduction</h1></center>
       <div style="width:800px; margin:0 auto; text-align=center">
       <!-- <div class="col col-wrapper"> -->
@@ -246,14 +246,20 @@
       <div style="width:800px; margin:0 auto; text-align=center">
       <!-- <div class="col col-wrapper"> -->
         To approach this task, previous efforts mainly contain two steps: 1) they first segment 3D instancesand learn instance-level visual representation throughout the scene; 2) then integrate the visual featurewith input language features and determine the instance(s) that best align the feature of input language. This pipeline successfully addresses many simple query sentence, but easily failed when the querysentences describe complex spatial relation between objects (e.g., 'Standing in the middle of the room,looking at the two windows, the one to the right'). One critical issue that accounts is, the structureand relation of language tokens are equally important compared with the vision part, but harderto understand. By treating language as a linear structure, neither max-pooling [1,2] nor attentionmechanism [3] is sufficient to learn spatial relationship in language effectively.      
-        \(\alpha\)
-        \(\hat{N}^l_i = \phi_n(N^l_i); \hat{E}^l_t = \phi_e(E^l_i)\)
-        \[\hat{N}^l_i = \phi_n(N^l_i); \hat{E}^l_t = \phi_e(E^l_i)\]
+        <!-- \(\alpha\) -->
+        <!-- \(\hat{N}^l_i = \phi_n(N^l_i); \hat{E}^l_t = \phi_e(E^l_i)\) -->
+        <!-- \[\hat{N}^l_i = \phi_n(N^l_i); \hat{E}^l_t = \phi_e(E^l_i)\] -->
 
         <!-- <blockquote>$\displaystyle{\hat{N}^l_i = \phi_n(N^l_i); \hat{E}^l_t = \phi_e(E^l_i)}$</blockquote> -->
 
         <!-- $\\$\alpha + \\$\beta = \\$(\alpha + \beta).$ -->
       </div><br/>
+
+      <div style="width:800px; margin:0 auto; text-align=center">
+        This triggers our motivation in proposing this Multimodal Graph Matching Network. Our main intuition is to introduce prior knowledge from semantic parser to understand language structure. Particularly, we first generate a parse-tree and re-arrange the root and leaf node given a easy attainable language classifier. With such a well-organized language parsing tree and a canonical vision graph from Graph Neural Network, we matches the parsing tree and the k-NN sub-tree of candidate instance with our proposed similarity metric. A contrastive loss supervises the ground truth instance to have the largest similarity with the parsing tree of query sentence. Unlike \cite{chen2019scanrefer,achlioptas2020referit3d,huang2021text}, our graph matching procedure imposes the strong constraint of the existence of every language component and relation in the visual graph. The noun of locality gains the largest attention as it is explicitly separated out. The matching result is also easier to be comprehended.
+      
+      </div><br/>
+
 
       <style type="text/css">
         .tg  {border-collapse:collapse;border-spacing:0;}
