@@ -381,6 +381,17 @@
       \[\hat{N}^l_i = \phi_n(N^l_i); \hat{E}^l_t = \phi_e(E^l_i)\]
       </div><br/>
 
+
+      <center><h2>Multimodal Graph Matching</h2></center>
+      In this subsection, we aim at finding the structural similarity of each instances in the vision graph with the generated parsing tree. 
+      A feasible idea is to leverage the GCN again to aggregate neighbor features and compare the central features. 
+      However, this black-box network loses the clear edge and node correspondence over two graphs/trees and is also less interpretable. 
+      Therefore, we first cut the graph into $m$ subtrees for \(m\) instances using k-NN and then define a similarity \(\mathcal{D}\) that measures the similarity of \(\hat{\mathcal{T}}^l\) and \(\hat{\mathcal{T}}^v\). 
+      The similarity of two trees is defined as the sum over cosine similarities of corresponding edges and nodes over trees, as shown in Figure \ref{}.
+
+      </div><br/>
+
+
       <style type="text/css">
         .tg  {border-collapse:collapse;border-spacing:0;}
         .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
