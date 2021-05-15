@@ -409,6 +409,15 @@
         This is essentially a Linear Assignment Problem. Among different variants, we integrate \cite{bertsekas1992auction} into our pipeline and make our network end-to-end trainable.
       </div><br/>
 
+      <center><h2>Loss Function</h2></center>
+      
+      <div style="width:800px; margin:0 auto; text-align=center"></div>
+        Since we consider 3D referring rather a matching and retrieval task then a classification task, we argue that ranking loss is much more proper than standard Cross Entropy loss for this task. 
+        It enlarges the gap of similarity scores between positive pairs and negative pairs and makes feature more discriminative. 
+        In referencing, we predict 3D instances with similarity score above a threshold, which is naturally effective for query sentences with multi corresponding instances. 
+        Empirically, we found the Contrastive loss obtains superior performance against CrossEntropy loss and InfoNCE loss. 
+        Given the visual sub-tree of a positive instance and a negative instance, the loss function is formulated as below.
+      </div><br/>
 
 
 
