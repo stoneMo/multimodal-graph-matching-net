@@ -341,7 +341,7 @@
       <div style="width:800px; margin:0 auto; text-align=center">
         In order to get rid of linear structures of token-wised embeddings used in previous work, we apply an English dependency parser~\cite{} to the token-wise GloVE feature \(Q=\{q_1,...,q_k\}\) of the description for each sample instance.  
         In this way, the dependency structure of sentences, <i>i.e.</i>, which words depend on (modify or are arguments of) which other words will be learned.
-        In Figure \ref{}, we show an example of the dependency tree for the description 'there is a   white toilet. placed in the corner of the bath.'.
+        In Figure 2, we show an example of the dependency tree for the description 'there is a   white toilet. placed in the corner of the bath.'.
         Given the sentence, we generate a parsing tree \(\mathcal{T}^l=\{N^l_c,(N^l_1,E^l_1),...,(N^l_t,E^l_t)\}\), where \(N,E\) are \(d\) dimension node/edge feature of the parsing tree respectively. 
         In this case, we set the center node `toilet' as $N^l_c$, the leaf node `bath' as \(N^l_t\), and the edge `corner' as \(E^l_t\).
       </div><br/>
@@ -357,7 +357,7 @@
 
       <figure>
         <img src="resources/parsing_graph.png" alt="Trulli" style="width:800px; margin:0 auto; text-align=center">
-        <figcaption>Figure 1 A dependency parsing tree for the description <i>`there is a white toilet. placed in the corner of the bath.'</i>.</figcaption>
+        <figcaption>Figure 1. A dependency parsing tree for the description <i>`there is a white toilet. placed in the corner of the bath.'</i>.</figcaption>
       </figure>
       
     </div><br/>
@@ -397,13 +397,22 @@
       </div><br/>
 
 
+      <div style="width:800px; margin:0 auto; text-align=center">
+
+        <figure>
+          <img src="resources/parsing_graph.png" alt="Trulli" style="width:800px; margin:0 auto; text-align=center">
+          <figcaption>Figure 2. Overview of our proposed model.</figcaption>
+        </figure>
+        
+      </div><br/>
+
       <center><h2>3.5 Multimodal Graph Matching</h2></center>
       <div style="width:800px; margin:0 auto; text-align=center">
         In this subsection, we aim at finding the structural similarity of each instances in the vision graph with the generated parsing tree. 
         A feasible idea is to leverage the GCN again to aggregate neighbor features and compare the central features. 
         However, this black-box network loses the clear edge and node correspondence over two graphs/trees and is also less interpretable. 
         Therefore, we first cut the graph into $m$ subtrees for \(m\) instances using k-NN and then define a similarity \(\mathcal{D}\) that measures the similarity of \(\hat{\mathcal{T}}^l\) and \(\hat{\mathcal{T}}^v\). 
-        The similarity of two trees is defined as the sum over cosine similarities of corresponding edges and nodes over trees, as shown in Figure \ref{}.
+        The similarity of two trees is defined as the sum over cosine similarities of corresponding edges and nodes over trees, as shown in Figure 2.
 
         \[\mathcal{D}(\hat{\mathcal{T}}^v,\hat{\mathcal{T}}^l) = \max_{\mathcal{A}:i\to j} \sum_i \frac{E^l_i\cdot E^v_{j}}{||E^l_i||_2||E^v_j||_2} + \frac{N^l_i\cdot N^v_{j}}{||N^l_i||_2||N^v_j||_2}\]
       </div><br/>
@@ -413,7 +422,7 @@
         The criterion is that true correspondences result in largest overall similarity. 
         As we create the visual sub tree by k-NN, there might be redundant neighboring node that does not described in the sentence. 
         However, every component in the language parsing tree is expected to find clear corresponding node and edge. 
-        This is essentially a Linear Assignment Problem. Among different variants, we integrate \cite{bertsekas1992auction} into our pipeline and make our network end-to-end trainable.
+        This is essentially a Linear Assignment Problem. Among different variants, we integrate [19] into our pipeline and make our network end-to-end trainable.
       </div><br/>
 
       <center><h2>3.6 Loss Function</h2></center>
