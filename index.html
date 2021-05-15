@@ -238,7 +238,7 @@
       </table>
       <br>
 
-      <center><h1>Introduction</h1></center>
+      <center><h1>1. Introduction</h1></center>
       <div style="width:800px; margin:0 auto; text-align=center">
       <!-- <div class="col col-wrapper"> -->
         3D referring (grounding) is a newly defined vision task aiming at indicating target object describedby nature languages from a 3D scene. 
@@ -290,7 +290,7 @@
       </div><br/>
       <br><hr>
 
-      <center><h1>Related Works</h1></center>
+      <center><h1>2. Related Works</h1></center>
       <div style="width:800px; margin:0 auto; text-align=center">
         <b>2D/3D Visual Grounding</b> In recent years, connecting vision to natural language gains its popularity. 
         Visual grounding [4,5] is one of the long standing tasks that aims to localize the instance that is referred by the query sentence. 
@@ -320,8 +320,8 @@
       </div><br/>
       <br><hr>
 
-      <center><h1>Methodology</h1></center>
-      <center><h2>Problem Setup</h2></center>
+      <center><h1>3. Methodology</h1></center>
+      <center><h2>3.1 Problem Setup</h2></center>
 
       <div style="width:800px; margin:0 auto; text-align=center">
         Our Multimodal Graph Matching Network takes a 3D point cloud \(P\in \mathbb{R}^{T\times3}=\{p_1,...,p_n\}\) with RGB/normal features \(F\in \mathbb{R}^{T\times4}=\{f_1,...,f_n\}\) and a query sentence as an input. 
@@ -336,7 +336,7 @@
         It reflects the confident value of the \(j\)-th instance being referred by the sentence.
       </div><br/>
 
-      <center><h2>Parsing Tree Generation</h2></center>
+      <center><h2>3.2 Parsing Tree Generation</h2></center>
 
       <div style="width:800px; margin:0 auto; text-align=center">
         In order to get rid of linear structures of token-wised embeddings used in previous work, we apply an English dependency parser~\cite{} to the token-wise GloVE feature \(Q=\{q_1,...,q_k\}\) of the description for each sample instance.  
@@ -362,7 +362,7 @@
       
     </div><br/>
 
-      <center><h2>3D Instance Segmentation</h2></center>
+      <center><h2>3.3 3D Instance Segmentation</h2></center>
       <div style="width:800px; margin:0 auto; text-align=center">
         In this section, we directly adapt state-of-the-art PointGroup \cite{jiang2020pointgroup} as an off-the-shelf backbone. 
         Specifically, given point cloud \(P\) and its point feature \(F\), PointGroup predicts point-wise semantic label \(S\in \mathbb{R}^{n\times1}=\{s_1,...,s_n\}\) and offset \(\Delta\in\mathbb{R}^{n\times3}=\{\Delta p_1,...,\Delta p_n\}\). 
@@ -377,7 +377,7 @@
       </div><br/>
 
 
-      <center><h2>Vision & Language Feature Encoding</h2></center>
+      <center><h2>3.4 Vision & Language Feature Encoding</h2></center>
 
       <div style="width:800px; margin:0 auto; text-align=center">
         Due to the complex structure of the vision graph, we are motivated to use a Dynamic Graph Convolution Network (DGCN) \cite{wang2019dynamic} to extract discriminative instance features considering its relation with neighboring instances. 
@@ -397,7 +397,7 @@
       </div><br/>
 
 
-      <center><h2>Multimodal Graph Matching</h2></center>
+      <center><h2>3.5 Multimodal Graph Matching</h2></center>
       <div style="width:800px; margin:0 auto; text-align=center">
         In this subsection, we aim at finding the structural similarity of each instances in the vision graph with the generated parsing tree. 
         A feasible idea is to leverage the GCN again to aggregate neighbor features and compare the central features. 
@@ -416,7 +416,7 @@
         This is essentially a Linear Assignment Problem. Among different variants, we integrate \cite{bertsekas1992auction} into our pipeline and make our network end-to-end trainable.
       </div><br/>
 
-      <center><h2>Loss Function</h2></center>
+      <center><h2>3.6 Loss Function</h2></center>
       
       <div style="width:800px; margin:0 auto; text-align=center">
         Since we consider 3D referring rather a matching and retrieval task then a classification task, we argue that ranking loss is much more proper than standard Cross Entropy loss for this task. 
@@ -431,8 +431,8 @@
       </div><br/>
       <br><hr>
 
-      <center><h1>Experiments</h1></center>
-      <center><h2>Datasets, Baseline, Metrics</h2></center>
+      <center><h1>4. Experiments</h1></center>
+      <center><h2>4.1 Datasets, Baseline, Metrics</h2></center>
 
       <div style="width:800px; margin:0 auto; text-align=center">
         We evaluate our method using the ScanRefer dataset. ScanRefer is a dataset is based on ScanNetv2, consisting 51,583 descriptions of 11,046 objects in 1,513 3D indoor scenes. 
@@ -450,7 +450,7 @@
         where instances are counted positive if and only if the IoU of predicted box and the ground truth box larger than the threshold.
       </div><br/>
 
-      <center><h2>Experiment Settings</h2></center>
+      <center><h2>4.2 Experiment Settings</h2></center>
       <div style="width:800px; margin:0 auto; text-align=center">
         Our implementation is built on PyTorch.
         We train the network for 32 epochs by using the Adam optimizer with the batch size of 32.
@@ -458,28 +458,28 @@
         All experiments are conducted on one NVIDIA 2080Ti GPU.
       </div><br/>
 
-      <center><h2>Comparison with State-of-the-arts</h2></center>
+      <center><h2>4.3 Comparison with State-of-the-arts</h2></center>
       <div style="width:800px; margin:0 auto; text-align=center">
         Table \ref{tab: exp_sota} reports the comparsion results with state-of-the-arts.
 
       </div><br/>
 
       
-      <center><h2>Visualization Results</h2></center>
+      <center><h2>4.4 Visualization Results</h2></center>
 
       <div style="width:800px; margin:0 auto; text-align=center">
         Figure \ref{fig: vis_scanrefer} shows visualization results using our proposed model.
       </div><br/>
       <br><hr>
 
-      <center><h1>Discussions</h1></center>
+      <center><h1>5. Discussions</h1></center>
 
       <div style="width:800px; margin:0 auto; text-align=center">
         TODO
       </div><br/>
       <br><hr>
 
-      <center><h1>Future Work</h1></center>
+      <center><h1>6. Future Work</h1></center>
 
       <div style="width:800px; margin:0 auto; text-align=center">
       <li>We would like to focus on the actual performance bottleneck of our methods and improve both the backbone module (maybe replace GloVE with pretraining BERT) and processing logic.</li>
