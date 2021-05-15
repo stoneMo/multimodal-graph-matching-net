@@ -385,7 +385,7 @@
       
       </div><br/>
 
-      <div style="width:800px; margin:0 auto; text-align=center"></div>
+      <div style="width:800px; margin:0 auto; text-align=center">
         As for the language part, since the parsing trees share a simple structure (<i>i.e.</i> a tree with depth equals 
         1), a direct convolutional layers \(\psi\) is carried out learn the node/edge feature without any message passing. 
         The language encoding network is formulated as
@@ -394,7 +394,7 @@
 
 
       <center><h2>Multimodal Graph Matching</h2></center>
-      <div style="width:800px; margin:0 auto; text-align=center"></div>
+      <div style="width:800px; margin:0 auto; text-align=center">
         In this subsection, we aim at finding the structural similarity of each instances in the vision graph with the generated parsing tree. 
         A feasible idea is to leverage the GCN again to aggregate neighbor features and compare the central features. 
         However, this black-box network loses the clear edge and node correspondence over two graphs/trees and is also less interpretable. 
@@ -404,7 +404,7 @@
         \[\mathcal{D}(\hat{\mathcal{T}}^v,\hat{\mathcal{T}}^l) = \max_{\mathcal{A}:i\to j} \sum_i \frac{E^l_i\cdot E^v_{j}}{||E^l_i||_2||E^v_j||_2} + \frac{N^l_i\cdot N^v_{j}}{||N^l_i||_2||N^v_j||_2}\]
       </div><br/>
 
-      <div style="width:800px; margin:0 auto; text-align=center"></div>
+      <div style="width:800px; margin:0 auto; text-align=center">
         Before estimating the similarity, we need to determine the correspondences (<i>i.e.</i> the assignment matrix \(\mathcal{A}\)) first. 
         The criterion is that true correspondences result in largest overall similarity. 
         As we create the visual sub tree by k-NN, there might be redundant neighboring node that does not described in the sentence. 
@@ -414,7 +414,7 @@
 
       <center><h2>Loss Function</h2></center>
       
-      <div style="width:800px; margin:0 auto; text-align=center"></div>
+      <div style="width:800px; margin:0 auto; text-align=center">
         Since we consider 3D referring rather a matching and retrieval task then a classification task, we argue that ranking loss is much more proper than standard Cross Entropy loss for this task. 
         It enlarges the gap of similarity scores between positive pairs and negative pairs and makes feature more discriminative. 
         In referencing, we predict 3D instances with similarity score above a threshold, which is naturally effective for query sentences with multi corresponding instances. 
@@ -429,24 +429,24 @@
       <center><h1>Experiments</h1></center>
       <center><h2>Datasets, Baseline, Metrics</h2></center>
 
-      <div style="width:800px; margin:0 auto; text-align=center"></div>
+      <div style="width:800px; margin:0 auto; text-align=center">
         We evaluate our method using the ScanRefer dataset. ScanRefer is a dataset is based on ScanNetv2, consisting 51,583 descriptions of 11,046 objects in 1,513 3D indoor scenes. 
         ScanRefer provides training, validation and testing splits. 
         Since the testing labels are not released, the model performance are currently evaluated on the validation set.
       </div><br/>
 
-      <div style="width:800px; margin:0 auto; text-align=center"></div>
+      <div style="width:800px; margin:0 auto; text-align=center">
         We basically compare our performance with newest state-of-the-arts InstanceRefer \cite{yuan2021instancerefer} and TGNN \cite{huang2021text}. 
         We also provide self-comparison here.
       </div><br/>
 
-      <div style="width:800px; margin:0 auto; text-align=center"></div>
+      <div style="width:800px; margin:0 auto; text-align=center">
         Following the ScanRefer \cite{chen2019scanrefer}, we use \(Acc@0.25IoU\) and \(Acc@0.5IoU\), 
         where instances are counted positive if and only if the IoU of predicted box and the ground truth box larger than the threshold.
       </div><br/>
 
       <center><h2>Experiment Settings</h2></center>
-      <div style="width:800px; margin:0 auto; text-align=center"></div>
+      <div style="width:800px; margin:0 auto; text-align=center">
         Our implementation is built on PyTorch.
         We train the network for 32 epochs by using the Adam optimizer with the batch size of 32.
         The initial learning rate is 0.001 with the decay as 0.9 at 10, 20 epoch.
@@ -454,7 +454,7 @@
       </div><br/>
 
       <center><h2>Comparison with State-of-the-arts</h2></center>
-      <div style="width:800px; margin:0 auto; text-align=center"></div>
+      <div style="width:800px; margin:0 auto; text-align=center">
         Table \ref{tab: exp_sota} reports the comparsion results with state-of-the-arts.
 
       </div><br/>
@@ -462,21 +462,21 @@
       
       <center><h2>Visualization Results</h2></center>
 
-      <div style="width:800px; margin:0 auto; text-align=center"></div>
+      <div style="width:800px; margin:0 auto; text-align=center">
         Figure \ref{fig: vis_scanrefer} shows visualization results using our proposed model.
       </div><br/>
 
 
       <center><h1>Discussions</h1></center>
 
-      <div style="width:800px; margin:0 auto; text-align=center"></div>
+      <div style="width:800px; margin:0 auto; text-align=center">
         TODO
       </div><br/>
 
 
       <center><h1>Future Work</h1></center>
 
-      <div style="width:800px; margin:0 auto; text-align=center"></div>
+      <div style="width:800px; margin:0 auto; text-align=center">
       <li>We would like to focus on the actual performance bottleneck of our methods and improve both the backbone module (maybe replace GloVE with pretraining BERT) and processing logic.</li>
       <li>The efficiency bottleneck is another point. The algorithm would be significantly faster if we directly implement a CUDA operator for LAP.</li>
       <li>The effectiveness of our proposed method need to be further examined on the test set of ScanRefer and also Referit3D.</li>
