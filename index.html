@@ -286,6 +286,24 @@
       </div><br/>
 
 
+      <center><h1>Method</h1></center>
+
+      <h2>Problem Setup</h2>
+
+      <div style="width:800px; margin:0 auto; text-align=center">
+        Our Multimodal Graph Matching Network takes a 3D point cloud \(P\in \mathbb{R}^{T\times3}=\{p_1,...,p_n\}\) with RGB/normal features \(F\in \mathbb{R}^{T\times4}=\{f_1,...,f_n\}\) and a query sentence as an input. 
+        Section \ref{mtg} first use GRU to encode token-wise GloVE feature as \(Q=\{q_1,...,q_k\}\) and then generate a parsing tree \(\mathcal{T}^l=\{N^l_c,(N^l_1,E^l_1),...,(N^l_t,E^l_t)\}\), where \(N,E\) are \(d\) dimension node/edge feature of the parsing tree respectively. 
+        \(N_c\) denotes the root of the tree and the rest are leaves. 
+        Section \ref{3dis} processes \(P\) and \(F\) into \(r\) instances with corresponding features. 
+        We construct a visual graph as \(\mathcal{G}^v=\{N^v_1,...,E^v_{12},...\}\) using k-nearest-neighbor (k-NN). 
+        \(\mathcal{G}^v\) is passed through a GNN to become \(\hat{\mathcal{G}}^v\) with spatial relation features extracted. 
+        Since structure of parsing tree \(\mathcal{T}^l\) is simpler, we directly use node-wise convolution without image passing and produce \(\hat{\mathcal{T}}^l\). 
+        For the \(j\)-th node in \(\hat{\mathcal{G}}^l\), we compute its 1-NN sub-tree as \(\hat{\mathcal{T}}^v_j\). 
+        Section \ref{mgm} serves as a similarity metric for \(\hat{\mathcal{T}}^v_j\) and \(\hat{\mathcal{T}}^l\). 
+        It reflects the confident value of the \(j\)-th instance being referred by the sentence.
+      </div><br/>
+
+
       <style type="text/css">
         .tg  {border-collapse:collapse;border-spacing:0;}
         .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
