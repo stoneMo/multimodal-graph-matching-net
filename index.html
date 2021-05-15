@@ -343,11 +343,10 @@
       </div><br/>
 
       <center><h2>3D Instance Segmentation</h2></center>
-
       <div style="width:800px; margin:0 auto; text-align=center">
         In this section, we directly adapt state-of-the-art PointGroup \cite{jiang2020pointgroup} as an off-the-shelf backbone. 
-        Specifically, given point cloud $P$ and its point feature $F$, PointGroup predicts point-wise semantic label \(S\in \mathbb{R}^{n\times1}=\{s_1,...,s_n\}\) and offset \(\Delta\in\mathbb{R}^{n\times3}=\{\Delta p_1,...,\Delta p_n\}\). 
-        A clustering algorithm is then carried out to group points with same segmentation label prediction $s$ and neighboring location $p+\Delta p$ after deformation into instances \(C=\{C_1,...,C_m\}\). 
+        Specifically, given point cloud \(P\) and its point feature \(F\), PointGroup predicts point-wise semantic label \(S\in \mathbb{R}^{n\times1}=\{s_1,...,s_n\}\) and offset \(\Delta\in\mathbb{R}^{n\times3}=\{\Delta p_1,...,\Delta p_n\}\). 
+        A clustering algorithm is then carried out to group points with same segmentation label prediction \(s\) and neighboring location \(p+\Delta p\) after deformation into instances \(C=\{C_1,...,C_m\}\). 
         We recommend readers to go over Alg.1 in \cite{jiang2020pointgroup} for details. 
         Note that the instance segmentor is trained separately in our pipeline.
       </div><br/>
@@ -355,6 +354,16 @@
       <div style="width:800px; margin:0 auto; text-align=center">
         With the instances segmented, we are able to build a graph \(\mathcal{G}^v\) to fully represent the indoor scene. 
         The nodes of the graph are the instances \(C\), and the edge of the graph is constructed via k-NN.
+      </div><br/>
+
+
+      <center><h2>Vision & Language Feature Encoding</h2></center>
+
+      <div style="width:800px; margin:0 auto; text-align=center">
+        Due to the complex structure of the vision graph, we are motivated to use a Dynamic Graph Convolution Network (DGCN) \cite{wang2019dynamic} to extract discriminative instance features considering its relation with neighboring instances. 
+        Specifically, the instance (node) feature \(N^t\) is extracted by a sparse convolution network (SCN) and the relation (edge) feature is extracted through a multi-layer perceptron (MLP). 
+        Then we use a convolution layer \(\phi\) to couple the edge feature with associated neighboring node feature. 
+        DGCN learns a node feature by simultaneously aggregate edge and neighboring node feature with a max-pooling, as shown in equation below.
       </div><br/>
 
       <style type="text/css">
