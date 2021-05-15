@@ -391,13 +391,25 @@
 
 
       <center><h2>Multimodal Graph Matching</h2></center>
-      In this subsection, we aim at finding the structural similarity of each instances in the vision graph with the generated parsing tree. 
-      A feasible idea is to leverage the GCN again to aggregate neighbor features and compare the central features. 
-      However, this black-box network loses the clear edge and node correspondence over two graphs/trees and is also less interpretable. 
-      Therefore, we first cut the graph into $m$ subtrees for \(m\) instances using k-NN and then define a similarity \(\mathcal{D}\) that measures the similarity of \(\hat{\mathcal{T}}^l\) and \(\hat{\mathcal{T}}^v\). 
-      The similarity of two trees is defined as the sum over cosine similarities of corresponding edges and nodes over trees, as shown in Figure \ref{}.
+      <div style="width:800px; margin:0 auto; text-align=center"></div>
+        In this subsection, we aim at finding the structural similarity of each instances in the vision graph with the generated parsing tree. 
+        A feasible idea is to leverage the GCN again to aggregate neighbor features and compare the central features. 
+        However, this black-box network loses the clear edge and node correspondence over two graphs/trees and is also less interpretable. 
+        Therefore, we first cut the graph into $m$ subtrees for \(m\) instances using k-NN and then define a similarity \(\mathcal{D}\) that measures the similarity of \(\hat{\mathcal{T}}^l\) and \(\hat{\mathcal{T}}^v\). 
+        The similarity of two trees is defined as the sum over cosine similarities of corresponding edges and nodes over trees, as shown in Figure \ref{}.
 
+        \[\mathcal{D}(\hat{\mathcal{T}}^v,\hat{\mathcal{T}}^l) = \max_{\mathcal{A}:i\to j} \sum_i \frac{E^l_i\cdot E^v_{j}}{||E^l_i||_2||E^v_j||_2} + \frac{N^l_i\cdot N^v_{j}}{||N^l_i||_2||N^v_j||_2}\]
       </div><br/>
+
+      <div style="width:800px; margin:0 auto; text-align=center"></div>
+        Before estimating the similarity, we need to determine the correspondences (<i>i.e.</i> the assignment matrix \(\mathcal{A}\)) first. 
+        The criterion is that true correspondences result in largest overall similarity. 
+        As we create the visual sub tree by k-NN, there might be redundant neighboring node that does not described in the sentence. 
+        However, every component in the language parsing tree is expected to find clear corresponding node and edge. 
+        This is essentially a Linear Assignment Problem. Among different variants, we integrate \cite{bertsekas1992auction} into our pipeline and make our network end-to-end trainable.
+      </div><br/>
+
+
 
 
       <style type="text/css">
