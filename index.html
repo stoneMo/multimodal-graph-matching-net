@@ -566,8 +566,10 @@
       <center><h2>4.4 Visualization Results</h2></center>
 
       <div style="width:800px; margin:0 auto; text-align=center">
-        Figure 4 shows visualization results using our proposed model.
-        As we can see, our proposed MGMN can localize the corresponding 3D instance precisely given a parsing tree using the query sentence.
+        Figure 4 shows visualization results using our proposed model and the intermediate result. 
+        As we can see, our proposed MGMN can localize the corresponding 3D instance precisely given a parsing tree using the query sentence. 
+        The parsing tree successfully distinguishes the noun of entity and the noun of position. However, some entities does not correspond to a instance in the visual graph (<i>e.g.</i> <em>{room,sign}</em>). 
+        These leaves are therefore redundant when we do graph matching. 
 
       </div><br/>
 
