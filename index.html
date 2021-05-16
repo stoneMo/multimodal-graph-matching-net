@@ -354,6 +354,8 @@
         In Figure 2, we show an example of the dependency tree for the description <i>'there is a  white toilet. placed in the corner of the bath.'</i>.
         Given the sentence, we generate a parsing tree \(\mathcal{T}^l=\{N^l_c,(N^l_1,E^l_1),...,(N^l_t,E^l_t)\}\), where \(N,E\) are \(d\) dimension node/edge feature of the parsing tree respectively. 
         In this case, we set the center node <em>'toilet'</em> as \(N^l_c\), the leaf node <em>'bath'</em> as \(N^l_t\), and the edge <em>'corner'</em> as \(E^l_t\).
+        In the generated parsing tree, each center/leaf node has attribute features for better multimodal graph matching with visual graph embeddings.
+      
       </div><br/>
 
       <!-- <table align=center width=1000px>
@@ -566,7 +568,7 @@
       <div style="width:800px; margin:0 auto; text-align=center">
         Figure 4 shows visualization results using our proposed model.
         As we can see, our proposed MGMN can localize the corresponding 3D instance precisely given a parsing tree using the query sentence.
-        
+
       </div><br/>
 
 
