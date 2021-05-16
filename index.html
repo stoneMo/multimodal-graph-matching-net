@@ -588,7 +588,7 @@
 
       <div style="width:800px; margin:0 auto; text-align=center">
         Here we list some potential reasons that accounts for not outperforming existing methods.
-        <li>One critical reason that our method has similar performance with Instance Refer is that we share same backbone Instance Segmentation network. By replacing the predicted segmentation masks with ground truth masks, both methods would get instantly $10\%$ boosting which is significantly larger than improvement of different methods.</li>
+        <li>One critical reason that our method has similar performance with Instance Refer is that we share same backbone Instance Segmentation network. By replacing the predicted segmentation masks with ground truth masks, both methods would get instantly \(10\%\) boosting which is significantly larger than improvement of different methods.</li>
         <li>Our processed parsing tree has a number of corner cases that biases the graph matching. For example, we haven't filter out entities that does not belongs to this 20 classes of instance and the tree leaf is formed and the existence of these nodes have no correspondence in the visual graph. Matching these leaves will confuse the network. However, directly dropping these token will lost the information inside. We have not yet figured out a desirable solution on these corner cases.</li>
         <li>Due to the larger memory consumption of our methods, we can only afford a batch size that is 4x smaller than Instance Refer and this might results in performance downgrade.</li>
       </div><br/>
